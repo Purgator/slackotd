@@ -23,8 +23,10 @@ export class LoginComponent  {
         if (this.ngForm.form.invalid) {
             return;
         }else{
-            this.authService.authenticate(this.model);
+            this.authService.authenticate(this.model)
+            .then((onfulfilled) => {
             this.router.navigate(['/'], "channel");
+            });
         }
     }
 }
