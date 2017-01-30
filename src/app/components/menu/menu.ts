@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Channel } from 'models';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'menu',
@@ -8,7 +9,7 @@ import { Channel } from 'models';
 export class MenuComponent {
     @Input() channels: Channel[] = [];
 
-    navigate(){
-        
-    }
+    constructor(
+        private router: Router){}
+
 }
