@@ -2,8 +2,8 @@
     <add-channel>
     </add-channel>
     <!-- itérer et fournir l'id -->
-    <a  class="list-group-item" (click)="navigate()" *ngFor="let channel of channels"
-        [routerLink]="[ '/channel/', channel.id  ]" > {{channel.name}}
+    <a  class="list-group-item" *ngFor="let channel of channels"
+        [routerLink]="[ '/channel/', channel.id ]" > {{channel.name}}
     </a>
 </nav>
 
