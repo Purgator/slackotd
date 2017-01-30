@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserLogin } from 'models';
+import { NgForm } from '@angular/forms';
 
 import { AuthenticationService } from '../../services/index';
 
@@ -9,6 +10,9 @@ import { AuthenticationService } from '../../services/index';
     templateUrl: 'login.html'
 })
 export class LoginComponent  {
+    @ViewChild(NgForm)
+    ngForm: NgForm;
+
     model = new UserLogin();
     constructor(
             private authService: AuthenticationService,
@@ -16,6 +20,11 @@ export class LoginComponent  {
     ) { }
 
     login() {
-        return this.authService.authenticate(this.model);
+        if (this.ngForm.form.invalid) {
+            return;
+        }else{
+            this.authService.authenticate(this.model);
+            this.router.navigate(['/'], "channel");
+        }
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { ModalDirective } from 'ng2-bootstrap';
@@ -14,15 +14,19 @@ export class AddChannelComponent {
     @ViewChild(NgForm) 
     ngForm:NgForm;
 
-    model =  {name: ''};
-    
+    model =  {channel: ''};
+
     constructor(
-    ) {
+        private channelService: ChannelService
+    ) { 
     }
 
     save() {
-        if (this.ngForm.valid) {
-      
+        if (this.ngForm.invalid) {
+        }else{
+            console.log(this.model.channel);
+            this.channelService.add(this.model.channel);
+            this.modal.hide();
         }
     }
 }

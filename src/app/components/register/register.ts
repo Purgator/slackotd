@@ -22,6 +22,9 @@ export class RegisterComponent {
     register() {
         if (this.ngForm.form.invalid) {
             return;
+        }else{
+            this.registrationService.register(this.model);
+            this.router.navigate(['/login'], "login");
         }
     }
 }
