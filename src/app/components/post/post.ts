@@ -17,7 +17,7 @@ export class PostComponent {
     ) {}
 
     ngOnInit() {
-        console.log(this.post);
+        console.log(this.post.creationTime);
         this.post.content = this.parser.parse(this.post);
     }
 
