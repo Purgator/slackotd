@@ -15,7 +15,9 @@ export class SocialFeedComponent implements OnInit {
         private postService: PostService, 
         private postSocket: PostSocketService,
         private route: ActivatedRoute
-    ) {}
+    ) {
+        console.log(this.items);
+    }
 
     ngOnInit() {
         this.route.params
