@@ -8,19 +8,20 @@ import { PostService, PostSocketService, LoggedUser, MessageParser } from 'servi
 })
 export class PostComponent { 
     @Input() post: Post;
-    
+
     constructor(
         private postSocket: PostSocketService, 
         private user: LoggedUser,
         private postService: PostService,
         private parser: MessageParser
-    ) {}
+    ) {
+        
+    }
 
     ngOnInit() {
-        //console.log(this.post.creationTime);
-        //console.log(this.parser.parse(this.post));
         this.post.content = this.parser.parse(this.post);
-        console.log(this.post.content);
+        console.log(this.post);
+       // console.log(this.post.content);
     }
 
     like(){
@@ -30,4 +31,5 @@ export class PostComponent {
             this.post.liked = false;
         })
     }
+
 }

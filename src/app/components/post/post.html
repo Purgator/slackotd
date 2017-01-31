@@ -7,23 +7,33 @@
     <div class="right">
         <div class="actions">
             <a (click)="like()" [class.liked]="post.liked"><i class="glyphicon glyphicon-heart"></i></a>
-            <a id="comment" (click)="comment()" [class.comment]="post.comment">Commenter</a>
         </div>
         <div class="date">{{post.creationTime | date: "dd/MM/yy hh:mm"}}</div>
     </div>
 </div>
 <div class="body">
-    <div class="date">{{post.creationTime | date: "dd/MM/yy hh:mm"}}</div>
-    <div class="username">{{post.user.username}}</div>
-    <pre class="message">{{post.message}}</pre>
+    <div *ngIf="post.content == null">
+        <pre class="message">{{post.message}}</pre>
+    </div>
     <div *ngIf="post.content">
         <div *ngIf="post.content.type == 'picture'">
             <picture-post-content [postContent]="post.content.value.mediaUrl"></picture-post-content>
         </div>
+        <div *ngIf="post.content.type == 'video'">
+            <video-post-content [postContent]="post.content.value.mediaUrl"></video-post-content>
+        </div>
+        <div *ngIf="post.content.type == 'youtube'">
+            <youtube-post-content [postContent]="post.content"></youtube-post-content>
+        </div>
+        <div *ngIf="post.content.type == 'link'">
+            <link-post-content [postContent]="post.content.value.mediaUrl"></link-post-content>
+        </div>
     </div>
 </div>
-<div class="footer">
 
+<div class="footer">
+    <post-comment *ngFor="let comment of post.comments" [comment]="comment"></post-comment>
+    <post-inputs [post]="post"></post-inputs>
 </div>
 <style>
     :host {
@@ -48,7 +58,7 @@
     .username {
         font-weight: bold;
         padding: 0 15px;
-        color : dodgerblue;
+        color: dodgerblue;
     }
     
     .right {
@@ -80,7 +90,7 @@
         text-shadow: none;
         cursor: default;
     }
-
+    
     pre.message {
         background: none;
         margin: 0;

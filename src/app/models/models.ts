@@ -10,7 +10,7 @@ export interface AuthenticationResult {
 }
 
 export class UserRegistration {
-    userName: string;
+    username: string;
     password: string;
     email?: string;
     pictureUrl?: string;
@@ -94,6 +94,14 @@ export class YoutubePostContent extends PostContent<YoutubeContent>{
     constructor(videoId:string) {
         super('youtube', {
             videoId: videoId
+        });
+    }
+}
+
+export class LinkPostContent extends PostContent<MediaContent>{
+    constructor(linkUrl:string) {
+        super('link', {
+            mediaUrl: linkUrl
         });
     }
 }
