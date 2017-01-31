@@ -28,16 +28,18 @@ export class MessageParser {
         }
         if(videoMatche) 
         {
-           // TODO
            console.log(videoMatche);
            return new VideoPostContent(videoMatche.input);
         }
-        /*if(youtubeMatche)
+        if(youtubeMatche)
         {
            // TODO
-           console.log(youtubeMatche);
-           return new YoutubePostContent(youtubeMatche.input);
-        }*/
+           youtubeMatche.forEach(element => {
+               console.log(element);
+           });
+           //console.log("youtubeMatche : " + youtubeMatche);
+           return new YoutubePostContent(youtubeMatche[2]);
+        }
         return null;
     }
 }
