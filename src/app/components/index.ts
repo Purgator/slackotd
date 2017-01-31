@@ -2,6 +2,7 @@ export * from './app.component';
 export * from './user-list/user-list';
 export * from './social-feed/social-feed';
 export * from './user-inputs/user-inputs';
+export * from './post-inputs/post-inputs';
 export * from './post-comment/post-comment';
 export * from './post/post';
 export * from './post-content/picture/picture-post-content';

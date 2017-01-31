@@ -7,14 +7,11 @@
     <div class="right">
         <div class="actions">
             <a (click)="like()" [class.liked]="post.liked"><i class="glyphicon glyphicon-heart"></i></a>
-            <a id="comment" (click)="comment()" [class.comment]="post.comment">Commenter</a>
         </div>
         <div class="date">{{post.creationTime | date: "dd/MM/yy hh:mm"}}</div>
     </div>
 </div>
 <div class="body">
-    <div class="date">{{post.creationTime | date: "dd/MM/yy hh:mm"}}</div>
-    <div class="username">{{post.user.username}}</div>
     <div *ngIf="post.content == null">
         <pre class="message">{{post.message}}</pre>
     </div>
@@ -33,8 +30,10 @@
         </div>
     </div>
 </div>
-<div class="footer">
 
+<div class="footer">
+    <post-comment *ngFor="let comment of post.comments" [comment]="comment"></post-comment>
+    <post-inputs [post]="post"></post-inputs>
 </div>
 <style>
     :host {

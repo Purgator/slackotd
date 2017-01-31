@@ -17,8 +17,8 @@ export class MenuComponent {
                 private postSocket: PostSocketService,
         private route: ActivatedRoute
         ){}
- ngOnInit()
- {
+
+ ngOnInit(){
      this.postSocket.onNewChannel((channel) =>
      {
          this.channels.push(channel);
