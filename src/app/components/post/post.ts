@@ -20,7 +20,7 @@ export class PostComponent {
         //console.log(this.post.creationTime);
         //console.log(this.parser.parse(this.post));
         this.post.content = this.parser.parse(this.post);
-        console.log(this.post.content);
+       // console.log(this.post.content);
     }
 
     like(){

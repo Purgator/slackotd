@@ -15,7 +15,7 @@
 <div class="body">
     <div class="date">{{post.creationTime | date: "dd/MM/yy hh:mm"}}</div>
     <div class="username">{{post.user.username}}</div>
-    <pre class="message">{{post.message}}</pre>
+    <div *ngIf="post.content == null"><pre class="message">{{post.message}}</pre></div>
     <div *ngIf="post.content">
         <div *ngIf="post.content.type == 'picture'">
             <picture-post-content [postContent]="post.content.value.mediaUrl"></picture-post-content>

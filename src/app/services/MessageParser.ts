@@ -33,7 +33,6 @@ export class MessageParser {
         }
         if(youtubeMatche)
         {
-           // TODO
            youtubeMatche.forEach(element => {
                console.log(element);
            });
