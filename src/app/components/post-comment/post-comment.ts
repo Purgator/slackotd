@@ -19,9 +19,8 @@ export class PostCommentComponent{
     }
 
     ngOnInit() {
-        console.log(this.comment);
+        //console.log(this.comment);
         this.comment.content = this.parser.parse(this.comment);
-        
     }
 
     like(){

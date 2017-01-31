@@ -12,13 +12,21 @@
     </div>
 </div>
 <div class="body">
-    <pre class="message">{{comment.message}}</pre>
+    <div *ngIf="comment.content == null">
+        <pre class="message">{{comment.message}}</pre>
+    </div>
     <div *ngIf="comment.content">
         <div *ngIf="comment.content.type == 'picture'">
             <picture-post-content [postContent]="comment.content.value.mediaUrl"></picture-post-content>
         </div>
         <div *ngIf="comment.content.type == 'video'">
             <video-post-content [postContent]="comment.content.value.mediaUrl"></video-post-content>
+        </div>
+        <div *ngIf="comment.content.type == 'youtube'">
+            <youtube-post-content [postContent]="comment.content"></youtube-post-content>
+        </div>
+        <div *ngIf="comment.content.type == 'link'">
+            <link-post-content [postContent]="comment.content.value.mediaUrl"></link-post-content>
         </div>
     </div>
 </div>
@@ -49,7 +57,7 @@
     .username {
         font-weight: bold;
         padding: 0 15px;
-        color : darkred;
+        color: darkred;
     }
     
     .right {
@@ -75,7 +83,7 @@
         text-shadow: none;
         cursor: default;
     }
-
+    
     pre.message {
         background: none;
         margin: 0;

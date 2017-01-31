@@ -77,10 +77,10 @@ OK11. Remplacer les liens http par des balises <a>...</a>.
 ### Commentaires
 
 ### Level I
-1. Pouvoir commenter un postes
-2. Afficher les commentaires d'un poste 
-3. Afficher l'auteur du commentaires
-4. Insérer les nouveaux commentaires reçues via WebSocket
+OK1. Pouvoir commenter un postes
+OK2. Afficher les commentaires d'un poste 
+OK3. Afficher l'auteur du commentaires
+OK4. Insérer les nouveaux commentaires reçues via WebSocket
 
 ### Level II
 5. Parser les commentaires comme les postes : extraire les images, vidéos...
