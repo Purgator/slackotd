@@ -26,13 +26,13 @@ export class MessageParser {
            //console.log(pictureMatche.input);
            return new PicturePostContent(pictureMatche.input);
         }
-      /*  if(videoMatche) 
+        if(videoMatche) 
         {
            // TODO
            console.log(videoMatche);
            return new VideoPostContent(videoMatche.input);
         }
-        if(youtubeMatche) 
+        /*if(youtubeMatche)
         {
            // TODO
            console.log(youtubeMatche);

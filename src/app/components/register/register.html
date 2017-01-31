@@ -15,6 +15,7 @@
     <div class="form-group">
         <button (click)="register()" [disabled]="loading" class="btn btn-primary">S'enregistrer</button>
     </div>
+    <div id="badRegister" class="alert alert-danger" hidden=true>L'inscription a échouée, veuillez réessayer.</div>
 </form>
 <style>
     :host {

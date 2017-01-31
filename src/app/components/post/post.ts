@@ -23,4 +23,11 @@ export class PostComponent {
         console.log(this.post.content);
     }
 
+    like(){
+        this.postService.like(this.post).then((value) => {
+            this.post.liked = true;
+        }, (rejected) => {
+            this.post.liked = false;
+        })
+    }
 }
