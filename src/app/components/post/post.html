@@ -2,9 +2,14 @@
     <div class="user-picture">
     </div>
     <div class="username">
+        {{post.user.username}}
     </div>
     <div class="right">
-        <div class="actions"><a [class.liked]="post.liked"><i class="glyphicon glyphicon-heart"></i></a></div>
+        <div class="actions">
+            <a (click)="like()" [class.liked]="post.liked"><i class="glyphicon glyphicon-heart"></i></a>
+            <a id="comment" (click)="comment()" [class.comment]="post.comment">Commenter</a>
+        </div>
+        <div class="date">{{post.creationTime | date: "dd/MM/yy hh:mm"}}</div>
     </div>
 </div>
 <div class="body">
@@ -46,6 +51,7 @@
     .username {
         font-weight: bold;
         padding: 0 15px;
+        color : dodgerblue;
     }
     
     .right {
@@ -57,6 +63,7 @@
     
     .right > .date {
         padding-left: 10px;
+        color: slategray;
     }
     
     .actions > a {
@@ -71,6 +78,12 @@
         cursor: default;
     }
     
+    .actions > #comment {
+        color: slategray;
+        text-shadow: none;
+        cursor: default;
+    }
+
     pre.message {
         background: none;
         margin: 0;

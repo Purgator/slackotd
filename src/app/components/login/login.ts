@@ -21,8 +21,10 @@ export class LoginComponent  {
 
     login() {
         if (this.ngForm.form.invalid) {
+            document.getElementById("badLogin").hidden = false;
             return;
         }else{
+            document.getElementById("badLogin").hidden = true;
             this.authService.authenticate(this.model)
             .then((onfulfilled) => {
             this.router.navigate(['/'], "channel");

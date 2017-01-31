@@ -21,8 +21,10 @@ export class RegisterComponent {
 
     register() {
         if (this.ngForm.form.invalid) {
+            document.getElementById("badRegister").hidden = false;
             return;
         }else{
+            document.getElementById("badRegister").hidden = true;
             this.registrationService.register(this.model)
             .then((onfulfilled) => 
             {
