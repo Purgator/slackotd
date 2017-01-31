@@ -17,10 +17,7 @@ export class PostComponent {
     ) {}
 
     ngOnInit() {
-        //console.log(this.post.creationTime);
-        //console.log(this.parser.parse(this.post));
         this.post.content = this.parser.parse(this.post);
-        console.log(this.post.content);
     }
 
     like(){
@@ -29,5 +26,9 @@ export class PostComponent {
         }, (rejected) => {
             this.post.liked = false;
         })
+    }
+
+    comment(){
+        this.postService.comment(this.post, "aaa");
     }
 }

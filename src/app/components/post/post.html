@@ -13,8 +13,6 @@
     </div>
 </div>
 <div class="body">
-    <div class="date">{{post.creationTime | date: "dd/MM/yy hh:mm"}}</div>
-    <div class="username">{{post.user.username}}</div>
     <pre class="message">{{post.message}}</pre>
     <div *ngIf="post.content">
         <div *ngIf="post.content.type == 'picture'">
