@@ -18,6 +18,9 @@
         <div *ngIf="post.content.type == 'picture'">
             <picture-post-content [postContent]="post.content.value.mediaUrl"></picture-post-content>
         </div>
+        <div *ngIf="post.content.type == 'video'">
+            <video-post-content [postContent]="post.content.value.mediaUrl"></video-post-content>
+        </div>
     </div>
 </div>
 <div class="footer">
