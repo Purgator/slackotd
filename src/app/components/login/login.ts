@@ -28,6 +28,8 @@ export class LoginComponent  {
             this.authService.authenticate(this.model)
             .then((onfulfilled) => {
             this.router.navigate(['/'], "channel");
+            }, (rejected) => {
+                document.getElementById("badLogin").hidden = false;
             });
         }
     }
