@@ -72,7 +72,7 @@ OK9. Retirer les urls des messages parsés pour ne restituer que son contenu
 
 ### Level III
 10. Pouvoir parser plusieurs type de contenus dans un seul poste
-11. Remplacer les liens http par des balises <a>...</a>.
+OK11. Remplacer les liens http par des balises <a>...</a>.
 
 ### Commentaires
 
