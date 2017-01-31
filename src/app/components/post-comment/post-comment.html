@@ -1,0 +1,98 @@
+<div class="header">
+    <div class="user-picture">
+        <img *ngIf="comment.user.pictureUrl" class="avatar" [src]="comment.user.pictureUrl" alt="">
+    </div>
+    <div class="username">
+        {{comment.user.username}}
+    </div>
+    <div class="right">
+        <div class="actions">
+            <a (click)="like()" [class.liked]="comment.liked"><i class="glyphicon glyphicon-heart"></i></a>
+        </div>
+        <div class="date">{{comment.creationTime | date: "dd/MM/yy hh:mm"}}</div>
+    </div>
+</div>
+<div class="body">
+    <div *ngIf="comment.content == null">
+        <pre class="message">{{comment.message}}</pre>
+    </div>
+    <div *ngIf="comment.content">
+        <div *ngIf="comment.content.type == 'picture'">
+            <picture-post-content [postContent]="comment.content.value.mediaUrl"></picture-post-content>
+        </div>
+        <div *ngIf="comment.content.type == 'video'">
+            <video-post-content [postContent]="comment.content.value.mediaUrl"></video-post-content>
+        </div>
+        <div *ngIf="comment.content.type == 'youtube'">
+            <youtube-post-content [postContent]="comment.content"></youtube-post-content>
+        </div>
+        <div *ngIf="comment.content.type == 'link'">
+            <link-post-content [postContent]="comment.content.value.mediaUrl"></link-post-content>
+        </div>
+    </div>
+</div>
+<div class="footer">
+
+</div>
+<style>
+    :host {
+        background: #ececec;
+        display: block;
+        border-radius: 4px;
+        border: 1px solid #d8d8d8;
+        margin-top: 20px;
+        margin-left: 40px;
+    }
+
+    .avatar{
+        width: 40px;
+        height: 40px;
+    }
+    
+    .user-picture {
+        width: 50px;
+        height: 50px;
+        border-radius: 2px;
+    }
+    
+    .header {
+        padding: 15px;
+        display: flex;
+    }
+    
+    .username {
+        font-weight: bold;
+        padding: 0 15px;
+        color: darkred;
+    }
+    
+    .right {
+        width: 100%;
+        display: flex;
+        /*align-items: center;*/
+        justify-content: flex-end;
+    }
+    
+    .right > .date {
+        padding-left: 10px;
+        color: slategray;
+    }
+    
+    .actions > a {
+        color: white;
+        text-shadow: 0 0 3px black;
+        cursor: pointer;
+    }
+    
+    .actions > a.liked {
+        color: #f17070;
+        text-shadow: none;
+        cursor: default;
+    }
+    
+    pre.message {
+        background: none;
+        margin: 0;
+        border: none;
+    }
+</style>

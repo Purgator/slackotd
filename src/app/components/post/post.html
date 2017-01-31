@@ -1,20 +1,40 @@
 <div class="header">
     <div class="user-picture">
+        <img *ngIf="post.user.pictureUrl" class="avatar" [src]="post.user.pictureUrl" alt="">
     </div>
     <div class="username">
+        {{post.user.username}}
     </div>
     <div class="right">
-        <div class="actions"><a [class.liked]="post.liked"><i class="glyphicon glyphicon-heart"></i></a></div>
+        <div class="actions">
+            <a (click)="like()" [class.liked]="post.liked"><i class="glyphicon glyphicon-heart"></i></a>
+        </div>
+        <div class="date">{{post.creationTime | date: "dd/MM/yy hh:mm"}}</div>
     </div>
 </div>
 <div class="body">
-    <pre class="message">{{post.message}}</pre>
+    <div *ngIf="post.content == null">
+        <pre class="message">{{post.message}}</pre>
+    </div>
     <div *ngIf="post.content">
-
+        <div *ngIf="post.content.type == 'picture'">
+            <picture-post-content [postContent]="post.content.value.mediaUrl"></picture-post-content>
+        </div>
+        <div *ngIf="post.content.type == 'video'">
+            <video-post-content [postContent]="post.content.value.mediaUrl"></video-post-content>
+        </div>
+        <div *ngIf="post.content.type == 'youtube'">
+            <youtube-post-content [postContent]="post.content"></youtube-post-content>
+        </div>
+        <div *ngIf="post.content.type == 'link'">
+            <link-post-content [postContent]="post.content.value.mediaUrl"></link-post-content>
+        </div>
     </div>
 </div>
+
 <div class="footer">
-    
+    <post-comment *ngFor="let comment of post.comments" [comment]="comment"></post-comment>
+    <post-inputs [post]="post"></post-inputs>
 </div>
 <style>
     :host {
@@ -24,41 +44,62 @@
         border: 1px solid #d8d8d8;
         margin-top: 20px;
     }
+    
+    .avatar{
+        width: 50px;
+        height: 50px;
+    }
+
     .user-picture {
         width: 50px;
         height: 50px;
         border-radius: 2px;
     }
+    
     .header {
         padding: 15px;
         display: flex;
     }
+    
     .username {
         font-weight: bold;
         padding: 0 15px;
+        color: dodgerblue;
     }
+    
     .right {
         width: 100%;
         display: flex;
         /*align-items: center;*/
         justify-content: flex-end;
     }
+    
     .right > .date {
         padding-left: 10px;
+        color: slategray;
     }
+    
     .actions > a {
         color: white;
         text-shadow: 0 0 3px black;
         cursor: pointer;
     }
+    
     .actions > a.liked {
         color: #f17070;
         text-shadow: none;
         cursor: default;
     }
+    
+    .actions > #comment {
+        color: slategray;
+        text-shadow: none;
+        cursor: default;
+    }
+    
     pre.message {
         background: none;
-        margin:0;
+        margin: 0;
         border: none;
     }
 </style>
