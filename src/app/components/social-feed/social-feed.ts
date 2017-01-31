@@ -27,6 +27,10 @@ export class SocialFeedComponent implements OnInit {
                     .getAll(this.channelId)
                     .then((items) => {
                         this.items = items
+                        this.postSocket.onPost((post) => {
+                            this.items.unshift(post);
+                        }
+                        )
                     });
             } );
     }

@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { ModalDirective } from 'ng2-bootstrap';
 import { ChannelService } from 'services';
 
+
+
 @Component({
     selector: 'add-channel',
     templateUrl: 'add-channel.html'
@@ -17,7 +19,9 @@ export class AddChannelComponent {
     model =  {channel: ''};
 
     constructor(
-        private channelService: ChannelService
+        private channelService: ChannelService,
+
+
     ) { 
     }
 
@@ -29,4 +33,6 @@ export class AddChannelComponent {
             this.modal.hide();
         }
     }
+
+
 }

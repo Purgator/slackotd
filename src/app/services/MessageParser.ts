@@ -15,15 +15,29 @@ const youtube = "https://youtu.be/";
 
 export class MessageParser {
 
-    parse(post: Post): PostContent<any> {
+    parse(post: Post): PostContent<any> 
+    {
         const youtubeMatche = youtubeRegex.exec(post.message);
         const pictureMatche = pictureRegex.exec(post.message);
         const videoMatche = videoRegex.exec(post.message);
 
-        if(pictureMatche) {
-           // TODO
+        if(pictureMatche) 
+        {
+           //console.log(pictureMatche.input);
+           return new PicturePostContent(pictureMatche.input);
         }
-
+      /*  if(videoMatche) 
+        {
+           // TODO
+           console.log(videoMatche);
+           return new VideoPostContent(videoMatche.input);
+        }
+        if(youtubeMatche) 
+        {
+           // TODO
+           console.log(youtubeMatche);
+           return new YoutubePostContent(youtubeMatche.input);
+        }*/
         return null;
     }
 }
