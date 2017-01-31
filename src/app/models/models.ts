@@ -97,3 +97,11 @@ export class YoutubePostContent extends PostContent<YoutubeContent>{
         });
     }
 }
+
+export class LinkPostContent extends PostContent<MediaContent>{
+    constructor(linkUrl:string) {
+        super('link', {
+            mediaUrl: linkUrl
+        });
+    }
+}
