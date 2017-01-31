@@ -32,9 +32,11 @@ export class SocialFeedComponent implements OnInit {
                         }
                         )
                         this.postSocket.onComment((comment) => {
+                            
                             this.items.forEach(post => {
                                 if(post.id === comment.post.id){
-                                    this.items.push(comment);
+                                    console.log(comment)
+                                    post.comments.push(comment);
                                 }
                             })
                         })
